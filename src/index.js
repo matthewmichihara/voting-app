@@ -12,11 +12,11 @@ app.use(bodyParser.json());
 storage.init();
 const votesStoreKey = 'votes';
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/results', function(req, res) {
+app.get('/results', function (req, res) {
     res.sendFile(path.join(__dirname, 'public', 'results.html'));
 });
 
@@ -43,7 +43,7 @@ app.post('/vote', async (req, res) => {
 
         await storage.setItem(votesStoreKey, votes);
         res.send(votes);
-    } catch(e) {
+    } catch (e) {
         res.status(500).send(e.message);
     }
 });
